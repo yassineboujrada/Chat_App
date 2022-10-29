@@ -59,3 +59,39 @@ module.exports.login_me = async (req,res,next) => {
             }}
         });
 }
+
+module.exports.pic_me = async (req,res,next) => {
+    console.log("mmm"+res);
+    try {
+        const userId = req.params.id;
+        const avatarImage = req.body.image;
+        const userData = await Users.findByIdAndUpdate(
+          userId,
+          {
+            isAvatarImageSet: true,
+            avatarImage,
+          },
+          { new: true }
+        );
+        return res.json({
+          isSet: userData.isAvatarImageSet,
+          image: userData.avatarImage,
+        });
+      } catch (ex) {
+        next(ex);
+      }
+}
+
+module.exports.getAllUsers = async (req, res, next) => {
+    try {
+      const users = await User.find({ _id: { $ne: req.params.id } }).select([
+        "email",
+        "username",
+        "avatarImage",
+        "_id",
+      ]);
+      return res.json(users);
+    } catch (ex) {
+      next(ex);
+    }
+  };

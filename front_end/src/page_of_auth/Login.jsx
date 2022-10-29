@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useState,useEffect} from 'react';
 import { Link,useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import ChatLogo from '../assets/chat.png';
@@ -25,7 +25,7 @@ export default function Login(){
 
     useEffect(() => {
       if (localStorage.getItem("chat-app-current-user")) {
-        navigate("/");
+        redirect("/");
       }
     }, []);
 
@@ -56,10 +56,10 @@ export default function Login(){
 
     const addNew =()=>{
         const {username,passwd} = datainput ;
-        if (passwd == "" || passwd.length<8){
+        if (passwd === "" || passwd.length<8){
             toast.error("probleme in passwordd",RenderMessageOptions);
             return false;
-        }else if(username.length==0){
+        }else if(username.length===0){
             toast.error("Username should be 4 characters or more",RenderMessageOptions);
             return false;
         }
