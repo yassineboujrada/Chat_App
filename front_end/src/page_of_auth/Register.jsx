@@ -45,7 +45,7 @@ export default function Register(){
                     "chat-app-current-user",
                     JSON.stringify(data.user)
                 );
-                redirect("/");
+                redirect("/login");
             }
         };}catch(err){
             console.log(err);
