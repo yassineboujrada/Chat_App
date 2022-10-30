@@ -6,6 +6,6 @@ const Routes_ = require("express").Router();
 Routes_.post("/register",register_me);
 Routes_.post("/login",login_me);
 Routes_.post("/setAvatar/:id",pic_me);
-router.get("/allusers/:id", getAllUsers);
+Routes_.get("/allusers/:id", getAllUsers);
 
 module.exports = Routes_;
