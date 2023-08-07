@@ -17,7 +17,7 @@ To run the Chat App locally, follow these steps:
 1- Clone this repository to your local machine using:
 
 ```sh 
-git clone https://github.com/yassineboujrada/Chat_App
+git clone https://github.com/yassineboujrada/Chat_App.git
 ```
 
 2- Navigate to the project directory:
